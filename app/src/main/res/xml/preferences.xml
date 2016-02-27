@@ -6,7 +6,8 @@
         android:title="@string/pref_sort_title"
         android:entries="@array/pref_sort"
         android:entryValues="@array/pref_sort_values"
-        android:summary="@string/pref_sort_summary">
+        android:summary="@string/pref_sort_summary"
+        android:defaultValue="@string/pref_sort_default_value">>
     </ListPreference>
     </PreferenceCategory>
 </PreferenceScreen>
