@@ -9,7 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="nanoproject1.durga.sph.com.androidnanodegreeproject1.MovieDetailFragment"
-    android:layout_marginLeft="8sp"
+    android:layout_marginLeft="@dimen/marginLeft"
     android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         android:adjustViewBounds="true"
         android:src="@drawable/abc_ic_clear_mtrl_alpha"
         android:layout_gravity="center"
-        android:layout_marginTop="8sp"
+        android:layout_marginTop="@dimen/marginTop"
         >
     </ImageView>
     <TextView
@@ -33,20 +33,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/mplot"
         android:textAppearance="@android:style/TextAppearance.Medium"
-        android:layout_marginTop="8sp"/>
+        android:layout_marginTop="@dimen/marginTop"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mrating"
         android:textAppearance="@android:style/TextAppearance.Medium"
-        android:layout_marginTop="8sp"
+        android:layout_marginTop="@dimen/marginTop"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mdate"
         android:textAppearance="@android:style/TextAppearance.Medium"
-        android:layout_marginTop="8sp"
+        android:layout_marginTop="@dimen/marginTop"
         />
 </LinearLayout>
 </ScrollView>

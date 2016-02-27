@@ -97,7 +97,7 @@ public class FetchMoviesTask extends AsyncTask<Void, Void, List<Movies>>
             final String API_PARAM = "api_key";
 
             Uri builtUri = Uri.parse(MOVIE_BASE_URL).buildUpon()
-                    .appendQueryParameter(API_PARAM, "efa689a34171df898a7eaf533e102862")
+                    .appendQueryParameter(API_PARAM, BuildConfig.MY_MOVIES_DB_API_KEY)
                     .build();
 
             URL url = new URL(builtUri.toString());
