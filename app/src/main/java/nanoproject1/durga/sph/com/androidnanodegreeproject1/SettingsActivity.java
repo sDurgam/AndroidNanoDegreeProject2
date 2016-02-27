@@ -44,7 +44,7 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
 //                @Override
 //                public void onClick(View v)
 //                {
-//                    Intent MoviesActivity = new Intent(mContext, MainActivity.class);
+//                    Intent MoviesActivity = new Intent(mContext, HomeActivity.class);
 //                    MoviesActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //                    MoviesActivity.putExtra(Constants.isPreferenceChanged, isPreferenceChanged);
 //                    mContext.startActivity(MoviesActivity);

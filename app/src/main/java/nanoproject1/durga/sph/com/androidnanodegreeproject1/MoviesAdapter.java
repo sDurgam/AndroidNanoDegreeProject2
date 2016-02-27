@@ -105,9 +105,22 @@ public class MoviesAdapter extends BaseAdapter
 
     public static void StartDetailActivity(Movies movie)
     {
-        Intent detailsIntent = new Intent(mContext, MovieDetailActivity.class);
-        detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        detailsIntent.putExtra(Constants.MOVIEARGS, movie);
-        mContext.startActivity(detailsIntent);
+        if(HomeActivity.mTwoPane)
+        {
+            if(mContext instanceof HomeActivity)
+            {
+                MovieDetailFragment movieFrag = (MovieDetailFragment) ((HomeActivity)mContext).getSupportFragmentManager()
+                        .findFragmentById(R.id.movie_detail_container);
+                movieFrag.UpdateContent(movie);
+            }
+
+        }
+        else
+        {
+            Intent detailsIntent = new Intent(mContext, MovieDetailActivity.class);
+            detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            detailsIntent.putExtra(Constants.MOVIEARGS, movie);
+            mContext.startActivity(detailsIntent);
+        }
     }
 }

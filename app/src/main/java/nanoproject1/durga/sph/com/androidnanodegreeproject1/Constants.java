@@ -18,4 +18,5 @@ public class Constants
     public static final String PLOTSTR = "Plot: ";
     public static final String AVGSTR = "Average Rating: ";
     public static final String RELEASESTR = "Release Date: ";
+    public static final String DETAILFRAGMENT_TAG = "MFTAG";
 }

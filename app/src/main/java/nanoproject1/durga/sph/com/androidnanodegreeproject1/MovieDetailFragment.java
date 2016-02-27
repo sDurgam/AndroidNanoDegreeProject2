@@ -71,14 +71,24 @@ public class MovieDetailFragment extends Fragment
         if(getArguments() != null)
         {
             Movies movie = (Movies) this.getArguments().get(Constants.MOVIEARGS);
-            mTitle.setText(movie.getTitle());
-            mPlot.setText(Constants.PLOTSTR + movie.getOverview());
-            //mThumbnail
-            Picasso.with(getActivity()).load(url+movie.getPoster_path())
-                    .into(mThumbnail);
-            mRating.setText(Constants.AVGSTR + String.valueOf(movie.getVote_average()));
-            mDate.setText(Constants.RELEASESTR +movie.getRelease_date());
+            PopulateMovieView(movie);
         }
+    }
+
+    protected void UpdateContent(Movies movie)
+    {
+        PopulateMovieView(movie);
+    }
+
+    private void PopulateMovieView(Movies movie)
+    {
+        mTitle.setText(movie.getTitle());
+        mPlot.setText(Constants.PLOTSTR + movie.getOverview());
+        //mThumbnail
+        Picasso.with(getActivity()).load(url+movie.getPoster_path())
+                .into(mThumbnail);
+        mRating.setText(Constants.AVGSTR + String.valueOf(movie.getVote_average()));
+        mDate.setText(Constants.RELEASESTR +movie.getRelease_date());
     }
 
     @Override

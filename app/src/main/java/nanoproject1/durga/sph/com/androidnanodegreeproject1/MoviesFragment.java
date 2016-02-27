@@ -54,7 +54,7 @@ public class MoviesFragment extends Fragment
         activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
-        madapter = new MoviesAdapter(activity.getApplicationContext(), new ArrayList<Movies>());
+        madapter = new MoviesAdapter(activity, new ArrayList<Movies>());
         moviesView.setAdapter(madapter);
 
         if(activity.getIntent().getExtras() != null && activity.getIntent().getExtras().get(Constants.isPreferenceChanged) != null)

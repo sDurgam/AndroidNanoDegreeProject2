@@ -5,7 +5,7 @@
     android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
-    tools:context="nanoproject1.durga.sph.com.androidnanodegreeproject1.MainActivity">
+    tools:context="nanoproject1.durga.sph.com.androidnanodegreeproject1.HomeActivity">
     <fragment
         android:id="@+id/fragment_container"
         android:name="nanoproject1.durga.sph.com.androidnanodegreeproject1.MoviesFragment"
