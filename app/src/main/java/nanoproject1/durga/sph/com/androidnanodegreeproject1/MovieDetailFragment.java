@@ -2,6 +2,7 @@ package nanoproject1.durga.sph.com.androidnanodegreeproject1;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import java.text.SimpleDateFormat;
 
 import butterknife.Bind;
 import butterknife.BindString;
@@ -34,6 +37,7 @@ public class MovieDetailFragment extends Fragment
     TextView mRating;
     @Bind(R.id.mdate)
     TextView mDate;
+    private final static String TAG = "MovieDetailFragment";
     public MovieDetailFragment()
     {
 
@@ -82,14 +86,39 @@ public class MovieDetailFragment extends Fragment
 
     private void PopulateMovieView(Movies movie)
     {
-        mTitle.setText(movie.getTitle());
-        mPlot.setText(Constants.PLOTSTR + movie.getOverview());
+        String title = movie.getTitle();
+        String plot = Constants.PLOTSTR + movie.getOverview();
+        String imageurl = url+movie.getPoster_path();
+        String rating = Constants.AVGSTR + String.valueOf(movie.getVote_average());
+        String date = Constants.RELEASESTR + ParseDate(movie.getRelease_date());
+        mTitle.setText(title);
+        mPlot.setText(plot);
         //mThumbnail
-        Picasso.with(getActivity()).load(url+movie.getPoster_path())
+        Picasso.with(getActivity()).load(imageurl)
                 .into(mThumbnail);
-        mRating.setText(Constants.AVGSTR + String.valueOf(movie.getVote_average()));
-        mDate.setText(Constants.RELEASESTR +movie.getRelease_date());
+        mRating.setText(rating);
+        //parse date to mm-dd-yyyy
+        mDate.setText(date);
     }
+
+    private String ParseDate(String dateStr)
+    {
+        String parsedDateStr = null;
+        SimpleDateFormat inputformat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat outputformat = new SimpleDateFormat("MMMM dd yyyy");
+        java.util.Date date;
+        try
+        {
+            date = inputformat.parse(dateStr);
+            parsedDateStr = outputformat.format(date);
+        }
+        catch (Exception e)
+        {
+            Log.e(TAG, Constants.DATEPARSEERROR);
+        }
+        return parsedDateStr;
+    }
+
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)

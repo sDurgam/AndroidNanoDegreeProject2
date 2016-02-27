@@ -19,4 +19,5 @@ public class Constants
     public static final String AVGSTR = "Average Rating: ";
     public static final String RELEASESTR = "Release Date: ";
     public static final String DETAILFRAGMENT_TAG = "MFTAG";
+    public static final String DATEPARSEERROR = "Unable to parse date string";
 }
