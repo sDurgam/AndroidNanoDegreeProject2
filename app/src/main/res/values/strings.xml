@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Now Playing Movies</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="pref_sort_summary">Set the sort order</string>
+    <string name="pref_sort_title">Sort Order</string>
+    <string name="pref_sort_key">sort order</string>
+    <string name="pref_sort_default_value">popularity</string>
+    <string-array name="pref_sort">
+        <item>Most Popular</item>
+        <item>Highest Rated</item>
+    </string-array>
+    <string-array name="pref_sort_values">
+        <item>popularity</item>
+        <item>vote_average</item>
+    </string-array>
+    <string name="movie_absolutepath">http://image.tmdb.org/t/p/w342/</string>
+    <string name="titlelbl">Title</string>
+    <string name="plotlbl">Plot</string>
+    <string name="ratinglbl">Rating</string>
+    <string name="datelbl">Release Date</string>
+</resources>
