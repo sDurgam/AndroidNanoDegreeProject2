@@ -23,7 +23,6 @@
         android:id="@+id/mthumbnail"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
-        android:src="@drawable/abc_ic_clear_mtrl_alpha"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/marginTop"
         >

@@ -81,6 +81,10 @@ public class MoviesAdapter extends BaseAdapter
                 .into(holder.thumbnail);
         //store movie details as a tag
         holder.movies = moviesList.get(position);
+        if(HomeActivity.mTwoPane && position == 0)
+        {
+            StartDetailActivity(holder.movies);
+        }
         return view;
     }
     static class ViewHolder
@@ -96,7 +100,6 @@ public class MoviesAdapter extends BaseAdapter
             //start detail activity
             StartDetailActivity(movies);
         }
-
         public ViewHolder(View view)
         {
             ButterKnife.bind(this, view);
