@@ -78,6 +78,8 @@ public class MoviesAdapter extends BaseAdapter
         view.setTag(holder);
         path = holder.url+moviesList.get(position).getPoster_path();
         Picasso.with(mContext).load(path)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.nowplayingicon)
                 .into(holder.thumbnail);
         //store movie details as a tag
         holder.movies = moviesList.get(position);
@@ -116,7 +118,6 @@ public class MoviesAdapter extends BaseAdapter
                         .findFragmentById(R.id.movie_detail_container);
                 movieFrag.UpdateContent(movie);
             }
-
         }
         else
         {

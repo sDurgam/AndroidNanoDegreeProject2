@@ -1,11 +1,12 @@
 package nanoproject1.durga.sph.com.androidnanodegreeproject1;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Created by durga on 2/26/16.
  */
-public class Movies implements Serializable
+public class Movies implements Parcelable
 {
     String id;
     String poster_path;
@@ -14,6 +15,11 @@ public class Movies implements Serializable
     String title;
     double popularity;
     double vote_average;
+
+    public Movies()
+    {
+
+    }
 
     public double getPopularity()
     {
@@ -71,4 +77,52 @@ public class Movies implements Serializable
     public void setVote_average(double vote_average) {
         this.vote_average = vote_average;
     }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags)
+    {
+        out.writeString(id);
+        out.writeString(poster_path);
+        out.writeString(overview);
+        out.writeString(release_date);
+        out.writeString(title);
+        out.writeDouble(popularity);
+        out.writeDouble(vote_average);
+    }
+
+    public static final Parcelable.Creator<Movies> CREATOR
+            = new Parcelable.Creator<Movies>() {
+        public Movies createFromParcel(Parcel source)
+        {
+            Movies mMovie = new Movies();
+            mMovie.id = source.readString();
+            mMovie.poster_path = source.readString();
+            mMovie.overview = source.readString();
+            mMovie.release_date = source.readString();
+            mMovie.title = source.readString();
+            mMovie.popularity = source.readDouble();
+            mMovie.vote_average = source.readDouble();
+            return mMovie;
+        }
+
+        public Movies[] newArray(int size)
+        {
+            return new Movies[size];
+        }
+    };
+
+    private Movies(Parcel in)
+    {
+        id = in.readString();
+        poster_path = in.readString();
+        overview = in.readString();
+        release_date = in.readString();
+        title = in.readString();
+        popularity = in.readDouble();
+        vote_average = in.readDouble();
+    }
+
 }

@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'durgapopularmovieskey'
             keyPassword 'saibaba'
-            storeFile file('/home/durga/durgapopularmovieskey')
+            storeFile file('durgapopularmovieskey')
             storePassword 'saibaba'
         }
     }

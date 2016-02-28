@@ -46,7 +46,7 @@ public class MovieDetailFragment extends Fragment
     public static MovieDetailFragment newInstance(Movies movie)
     {
         Bundle args = new Bundle();
-        args.putSerializable(Constants.MOVIEARGS, movie);
+        args.putParcelable(Constants.MOVIEARGS, movie);
         MovieDetailFragment fragment = new MovieDetailFragment();
         fragment.setArguments(args);
         return fragment;
