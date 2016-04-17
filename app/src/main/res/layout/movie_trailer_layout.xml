@@ -14,5 +14,6 @@
      android:layout_height="wrap_content"
      android:id="@+id/trailerTxt"
      android:text="abcdef"
-     android:textSize="@dimen/textSize"/>
+     android:textSize="@dimen/textSize"
+     android:layout_marginBottom="@dimen/marginBottom"/>
 </LinearLayout>
