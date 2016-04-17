@@ -11,13 +11,13 @@ public class HomeActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(findViewById(R.id.movie_detail_container) != null)
+        if(findViewById(R.id.movie_detail_container_pager) != null)
         {
             mTwoPane = true;
             if (savedInstanceState == null)
             {
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.movie_detail_container, new MovieDetailFragment(), Constants.DETAILFRAGMENT_TAG)
+                        .replace(R.id.movie_detail_container_pager, new MoviePagerFragment(), Constants.DETAILFRAGMENT_TAG)
                         .commit();
             }
         }

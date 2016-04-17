@@ -1,7 +1,8 @@
-package nanoproject1.durga.sph.com.androidnanodegreeproject1;
+package nanoproject1.durga.sph.com.androidnanodegreeproject1.movie;
 
+import android.content.ContentValues;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,16 +20,19 @@ import java.text.SimpleDateFormat;
 import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.BaseFragment;
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.Constants;
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.MoviesProvider;
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.R;
 
 /**
  * Created by durga on 2/27/16.
  */
-public class MovieDetailFragment extends Fragment
+public class MovieDetailFragment extends BaseFragment
 {
     @BindString(R.string.movie_absolutepath)
     String url;
-    @Bind(R.id.mtitle)
-    TextView mTitle;
     @Bind(R.id.mplot)
     TextView mPlot;
     @Bind(R.id.mthumbnail)
@@ -37,6 +41,9 @@ public class MovieDetailFragment extends Fragment
     TextView mRating;
     @Bind(R.id.mdate)
     TextView mDate;
+    @Bind(R.id.mfavorite)
+    TextView mFavorite;
+
     private final static String TAG = "MovieDetailFragment";
     public MovieDetailFragment()
     {
@@ -67,6 +74,8 @@ public class MovieDetailFragment extends Fragment
         super.onCreate(savedInstanceState);
     }
 
+    Movies movie;
+
     @Override
     public void onResume()
     {
@@ -74,12 +83,12 @@ public class MovieDetailFragment extends Fragment
         //get arguments
         if(getArguments() != null)
         {
-            Movies movie = (Movies) this.getArguments().get(Constants.MOVIEARGS);
+            movie = (Movies) this.getArguments().get(Constants.MOVIEARGS);
             PopulateMovieView(movie);
         }
     }
 
-    protected void UpdateContent(Movies movie)
+    public void UpdateContent(Movies movie)
     {
         PopulateMovieView(movie);
     }
@@ -89,16 +98,21 @@ public class MovieDetailFragment extends Fragment
         String title = movie.getTitle();
         String plot = Constants.PLOTSTR + movie.getOverview();
         String imageurl = url+movie.getPoster_path();
-        String rating = Constants.AVGSTR + String.valueOf(movie.getVote_average());
-        String date = Constants.RELEASESTR + ParseDate(movie.getRelease_date());
-        mTitle.setText(title);
+        String rating = String.valueOf(movie.getVote_average()) + Constants.AVGSTR;
+        String date = ParseDate(movie.getRelease_date());
         mPlot.setText(plot);
         //mThumbnail
         Picasso.with(getActivity()).load(imageurl)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.nowplayingicon)
                 .into(mThumbnail);
         mRating.setText(rating);
         //parse date to mm-dd-yyyy
-        mDate.setText(date);
+        mDate.setText(date.split(" ")[2]);
+        if(movie.isFavorite)
+        {
+            mFavorite.setText(getResources().getString(R.string.marked_favorite));
+        }
     }
 
     private String ParseDate(String dateStr)
@@ -124,8 +138,6 @@ public class MovieDetailFragment extends Fragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         inflater.inflate(R.menu.menu_main, menu);
-        // ShareActionProvider sharedprovider = (ShareActionProvider) MenuItemCompat.getActionProvider(menu.findItem(R.id.share));
-        // sharedprovider.setShareIntent(DisplayShareIntent());
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -134,5 +146,30 @@ public class MovieDetailFragment extends Fragment
     {
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick(R.id.mfavorite)
+    void onClick(View view)
+    {
+        TextView favoriteText = (TextView)view;
+        if(favoriteText.getText().equals(getResources().getString(R.string.mark_favorite)))
+        {
+            AddMovie(movie);
+            favoriteText.setText(getResources().getString(R.string.marked_favorite));
+        }
+    }
+
+    public void AddMovie(Movies movie)
+    {
+        ContentValues values = new ContentValues();
+        values.put(Constants._ID, movie.getId());
+        values.put(Constants.COLUMN_THUMBNAIL, movie.getPoster_path());
+        values.put(Constants.COLUMN_RELEASE_DATE, movie.getRelease_date());
+        values.put(Constants.COLUMN_TITLE, movie.getTitle());
+        values.put(Constants.COLUMN_PLOT, movie.getOverview());
+        values.put(Constants.COLUMN_POPULARITY, movie.getPopularity());
+        values.put(Constants.COLUMN_RATING, movie.getVote_average());
+        values.put(Constants.COLUMN_FAVORITE, movie.isFavorite());
+        Uri uri = getActivity().getContentResolver().insert(MoviesProvider.CONTENT_URI, values);
     }
 }

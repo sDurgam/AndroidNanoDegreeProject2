@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.movie.Movies;
+
 /**
  * Created by durga on 2/26/16.
  */

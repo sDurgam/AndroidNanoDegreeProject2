@@ -1,4 +1,4 @@
-package nanoproject1.durga.sph.com.androidnanodegreeproject1;
+package nanoproject1.durga.sph.com.androidnanodegreeproject1.movie;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -15,6 +15,9 @@ public class Movies implements Parcelable
     String title;
     double popularity;
     double vote_average;
+    public boolean isFavorite;
+    Trailers trailers;
+    Reviews reviews;
 
     public Movies()
     {
@@ -82,6 +85,17 @@ public class Movies implements Parcelable
         return 0;
     }
 
+    public boolean isFavorite()
+    {
+        return isFavorite;
+    }
+
+    public void setIsFavorite(boolean isFavorite)
+    {
+        this.isFavorite = isFavorite;
+    }
+
+
     public void writeToParcel(Parcel out, int flags)
     {
         out.writeString(id);
@@ -124,5 +138,4 @@ public class Movies implements Parcelable
         popularity = in.readDouble();
         vote_average = in.readDouble();
     }
-
 }

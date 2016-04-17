@@ -16,6 +16,8 @@ import butterknife.Bind;
 import butterknife.BindString;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.movie.MovieDetailFragment;
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.movie.Movies;
 
 /**
  * Created by durga on 2/26/16.
@@ -114,14 +116,14 @@ public class MoviesAdapter extends BaseAdapter
         {
             if(mContext instanceof HomeActivity)
             {
-                MovieDetailFragment movieFrag = (MovieDetailFragment) ((HomeActivity)mContext).getSupportFragmentManager()
-                        .findFragmentById(R.id.movie_detail_container);
+                MoviePagerFragment movieFrag = (MoviePagerFragment) ((HomeActivity)mContext).getSupportFragmentManager()
+                        .findFragmentById(R.id.movie_detail_container_pager);
                 movieFrag.UpdateContent(movie);
             }
         }
         else
         {
-            Intent detailsIntent = new Intent(mContext, MovieDetailActivity.class);
+            Intent detailsIntent = new Intent(mContext, MoviePagerActivity.class);
             detailsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             detailsIntent.putExtra(Constants.MOVIEARGS, movie);
             mContext.startActivity(detailsIntent);

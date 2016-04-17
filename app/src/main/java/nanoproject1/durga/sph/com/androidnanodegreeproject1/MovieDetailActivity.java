@@ -10,6 +10,8 @@ import android.view.MenuItem;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.movie.MovieDetailFragment;
+import nanoproject1.durga.sph.com.androidnanodegreeproject1.movie.Movies;
 
 /**
  * Created by durga on 2/27/16.
@@ -32,14 +34,14 @@ public class MovieDetailActivity extends AppCompatActivity
             if (savedInstanceState == null)
             {
                 getSupportFragmentManager().beginTransaction().
-                        add(R.id.movie_detail_container, movieDetailFragment).
+                        add(R.id.movie_detail_container_pager, movieDetailFragment).
                         addToBackStack(null)
                         .commit();
             }
             else
             {
                 getSupportFragmentManager().beginTransaction().
-                        replace(R.id.movie_detail_container, movieDetailFragment)
+                        replace(R.id.movie_detail_container_pager, movieDetailFragment)
                         .addToBackStack(null)
                         .commit();
             }

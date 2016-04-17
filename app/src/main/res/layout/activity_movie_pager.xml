@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/detailpagertoolbar"
+            android:layout_height="128dp"
+            android:layout_width="match_parent"
+            android:minHeight="?android:attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:gravity="bottom">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/detailpagertoolbar_title"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"/>
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+    <android.support.v4.view.ViewPager
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/moviePager">
+    </android.support.v4.view.ViewPager>
+</LinearLayout>

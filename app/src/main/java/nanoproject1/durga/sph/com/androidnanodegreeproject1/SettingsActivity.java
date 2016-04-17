@@ -40,17 +40,6 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
         final Context mContext = this;
         if(appbar != null)
         {
-//            appbar.setNavigationOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v)
-//                {
-//                    Intent MoviesActivity = new Intent(mContext, HomeActivity.class);
-//                    MoviesActivity.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                    MoviesActivity.putExtra(Constants.isPreferenceChanged, isPreferenceChanged);
-//                    mContext.startActivity(MoviesActivity);
-//
-//                }
-//            });
             setSupportActionBar(appbar);
             getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
